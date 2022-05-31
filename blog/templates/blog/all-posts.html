@@ -15,13 +15,11 @@
     <h2>My Collected Posts</h2>
 
     <ul>
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
-      {% include 'blog/includes/post.html' %}
+      {% for post in all_post  %}
+        {% include 'blog/includes/post.html' %} 
+      {% endfor %}
+      
+      
     </ul>
   </section>
 {% endblock content %}
