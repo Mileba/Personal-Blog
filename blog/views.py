@@ -5,11 +5,11 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Hello World")
+    return render(request, "blog/index.html")
 
 
 def posts(request):
-    return HttpResponse('This is a Blog page')
+    return render(request, 'blog/all-posts.html')
 
 
 def post_detail(request):

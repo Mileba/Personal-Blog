@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  My Blog
+{% endblock title %}
+
+{% block css_files %}
+ <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+ <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+
+{% endblock css_files %}
+
+
+{% block content %}
+  
+  <section id="welcome">
+    <header>
+      <img src="{% static 'blog/images/max.png' %}" alt="Mileba - the author of this Blog" />
+      <h2>MILEBA'S BLOG</h2>
+    </header>
+    <p>Hi, I am Micheal and i love to blog about tech and the world</p>
+  </section>
+  <section id="latest-posts">
+    <h2>
+      My Latest Thoughts
+    </h2>
+
+    <ul>
+      {% include 'blog/includes/post.html' %}
+    </ul>
+  </section>
+  <section class="about">
+    <h2>What I Do</h2>
+    <p>I love programming, I love to help others and i enjoy exploring new technologies in general</p>
+  </section>
+{% endblock content %}
+
+
+
