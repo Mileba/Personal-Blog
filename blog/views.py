@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from datetime import date
+from .models import Post
+
 
 all_posts = [
     {
@@ -59,24 +61,28 @@ all_posts = [
 ]
 
 
-def get_date(post):
-    return post.get('date')
+# def get_date(Post):
+#     return Post.get('date')
 
 
 def index(request):
-    sorted_posts = sorted(all_posts, key=get_date)
-    latest_posts = sorted_posts[-3:]
+    post = Post.objects.all().order_by("title")
+    # sorted_posts = sorted(post)
+    latest_posts = post[0:]
     return render(request, "blog/index.html", {"posts": latest_posts})
 
 
 def posts(request):
+    all_posts = Post.objects.all()
     return render(request, 'blog/all-posts.html', {
         "all_post": all_posts
     })
 
 
 def post_detail(request, slug):
-    identified_post = next(post for post in all_posts if post['slug'] == slug)
+    post_object = Post.objects.all()
+    identified_post = next(
+        post for post in post_object if post.slug == slug)
     return render(request, 'blog/post-detail.html', {
         "post": identified_post
     })
